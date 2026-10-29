@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Areia Commerce</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header>
+    <div class="marca">Areia Commerce</div>
+
+    <nav>
+        <button type="button" class="link-menu ativo" data-pagina="loja">Produtos</button>
+        <button type="button" class="link-menu" data-pagina="conta">Cadastro / Login</button>
+        <button type="button" class="link-menu" data-pagina="vendedor">Área do vendedor</button>
+        <button type="button" class="link-menu" data-pagina="compras">Minhas compras</button>
+        <button type="button" class="link-menu" data-pagina="carrinho">Carrinho</button>
+        <button type="button" class="link-menu" data-pagina="confirmacao">Confirmação da compra</button>
+        <button type="button" id="sair" class="secundario escondido">Sair</button>
+    </nav>
+</header>
+
+<main>
+
+    <!-- PÁGINA INICIAL: PRODUTOS -->
+    <section id="pagina-loja" class="pagina">
+        <section class="hero">
+            <div>
+                <p class="tag">SOL, MAR E LIBERDADE</p>
+                <h1>Seu verão começa aqui.</h1>
+                <p>Produtos para curtir a praia com conforto e estilo.</p>
+                <button type="button" class="botao" data-ir="produtos">Explorar produtos</button>
+            </div>
+        </section>
+
+        <section id="loja" class="secao">
+            <div class="titulo">
+                <div>
+                    <p class="tag">ESCOLHAS DE VERÃO</p>
+                    <h2>Produtos da loja</h2>
+                </div>
+                <span id="quantidadeCarrinho">Carrinho: 0</span>
+            </div>
+
+            <div id="produtos" class="grade"></div>
+        </section>
+    </section>
+
+    <!-- PÁGINA DE CADASTRO E LOGIN -->
+    <section id="pagina-conta" class="pagina escondido">
+        <section id="conta" class="painel">
+            <h2>Sua conta</h2>
+            <p id="estadoConta">Entre ou crie sua conta para comprar.</p>
+
+            <div class="colunas">
+                <form id="formLogin">
+                    <h3>Entrar</h3>
+
+                    <label>
+                        E-mail
+                        <input type="email" id="loginEmail" required>
+                    </label>
+
+                    <label>
+                        Senha
+                        <input type="password" id="loginSenha" required>
+                    </label>
+
+                    <button type="submit">Entrar</button>
+                </form>
+
+                <form id="formCadastro">
+                    <h3>Criar conta</h3>
+
+                    <label>
+                        Nome
+                        <input id="cadNome" required maxlength="100">
+                    </label>
+
+                    <label>
+                        E-mail
+                        <input type="email" id="cadEmail" required>
+                    </label>
+
+                    <label>
+                        Senha (mínimo 6 caracteres)
+                        <input type="password" id="cadSenha" minlength="6" required>
+                    </label>
+
+                    <label>
+                        Tipo de conta
+                        <select id="cadTipo">
+                            <option value="CLIENTE">Cliente</option>
+                            <option value="VENDEDOR">Vendedor</option>
+                        </select>
+                    </label>
+
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+
+            <p id="mensagem" role="status"></p>
+        </section>
+    </section>
+
+    <!-- PÁGINA EXCLUSIVA DO VENDEDOR -->
+    <section id="pagina-vendedor" class="pagina escondido">
+        <section id="vendedor" class="painel">
+            <h2>Área do vendedor</h2>
+            <p>Cadastre e gerencie os produtos da sua loja.</p>
+
+            <form id="formProduto" class="formProduto">
+                <label>
+                    Nome do produto
+                    <input id="produtoNome" required maxlength="120">
+                </label>
+
+                <label>
+                    Descrição
+                    <input id="produtoDescricao" maxlength="500">
+                </label>
+
+                <label>
+                    Preço (R$)
+                    <input id="produtoPreco" type="number" min="0.01" step="0.01" required>
+                </label>
+
+                <label>
+                    URL da imagem (opcional)
+                    <input id="produtoImagem" type="url">
+                </label>
+
+                <button type="submit">Cadastrar produto</button>
+            </form>
+
+            <h3>Meus produtos</h3>
+            <div id="meusProdutos" class="grade"></div>
+        </section>
+    </section>
+
+    <!-- PÁGINA DE COMPRAS -->
+    <section id="pagina-compras" class="pagina escondido">
+        <section id="compras" class="painel">
+            <h2>Minhas compras</h2>
+            <div id="listaCompras">
+                Entre com uma conta de cliente para ver seus pedidos.
+            </div>
+        </section>
+    </section>
+
+    <!-- PÁGINA DO CARRINHO -->
+    <section id="pagina-carrinho" class="pagina escondido">
+        <section class="painel carrinho">
+            <h2>Meu carrinho</h2>
+            <p>Confira seus produtos antes de confirmar o pedido.</p>
+
+            <div id="itensCarrinho">Seu carrinho está vazio.</div>
+
+            <button type="button" id="finalizar">Confirmar pedido</button>
+        </section>
+    </section>
+
+    <!-- PÁGINA DE CONFIRMAÇÃO DA COMPRA -->
+    <section id="pagina-confirmacao" class="pagina escondido">
+        <section class="painel confirmacao">
+            <h2>Compra confirmada!</h2>
+            <p id="mensagemConfirmacao">
+                A confirmação do pedido aparecerá aqui após a finalização da compra.
+            </p>
+
+            <div id="detalhesConfirmacao"></div>
+
+            <button type="button" data-ir="loja">Continuar comprando</button>
+            <button type="button" data-ir="compras">Ver minhas compras</button>
+        </section>
+    </section>
+
+</main>
+
+<footer>
+    Areia Commerce · Seu verão começa aqui.
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>
